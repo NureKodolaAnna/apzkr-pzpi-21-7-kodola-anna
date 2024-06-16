@@ -62,8 +62,7 @@ const EditUser = () => {
             await axios.put(`http://localhost:3000/api/users/update/${id}`, { ...userData, clinic: selectedClinic }, {
                 headers: { Authorization: `Bearer ${token}` }
             });
-            // Після успішного оновлення користувача перенаправити на сторінку профілю
-            // Вызовите функцию для обновления данных о клинике в профиле
+
             updateClinicName(selectedClinic, token);
             navigate(`/profile`);
         } catch (error) {
@@ -71,7 +70,6 @@ const EditUser = () => {
         }
     };
 
-    // Функция для отправки данных о клинике родительскому компоненту (Profile)
     const updateClinicName = async (clinicId, token) => {
         try {
             const response = await axios.get(`http://localhost:3000/api/clinics/${clinicId}`, {
@@ -80,7 +78,6 @@ const EditUser = () => {
                 }
             });
             const clinicName = response.data.name;
-            // Отправка данных о клинике родительскому компоненту (Profile)
             return clinicName;
         } catch (error) {
             console.error('Error fetching clinic name:', error);
