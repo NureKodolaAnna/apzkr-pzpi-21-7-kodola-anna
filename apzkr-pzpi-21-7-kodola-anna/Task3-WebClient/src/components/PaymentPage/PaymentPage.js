@@ -4,7 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import './PaymentPage.css';
 
 const PaymentPage = () => {
-    const { appointmentId } = useParams(); // Используем useParams для получения appointmentId из URL
+    const { appointmentId } = useParams();
     const [cardNumber, setCardNumber] = useState('');
     const [cvv, setCvv] = useState('');
     const [expiryDate, setExpiryDate] = useState('');
@@ -30,12 +30,10 @@ const PaymentPage = () => {
             setSuccess('Payment successful');
             setError(null);
 
-            // Обновляем статус приема на "оплачен"
             await axios.put(`http://localhost:3000/api/appointments/update/${appointmentId}`, {
                 status: 'paid',
             });
 
-            // Перенаправляем пользователя на страницу истории приемов
             navigate('/appointment-history');
         } catch (error) {
             setError('Payment failed. Please try again.');
