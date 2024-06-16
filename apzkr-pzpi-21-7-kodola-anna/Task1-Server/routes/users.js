@@ -11,25 +11,20 @@ require('dotenv').config();
 router.post('/register', async (req, res) => {
     const { username, password, email, first_name, last_name, role, clinic_id } = req.body;
 
-    // Список допустимих ролей
     const validRoles = ['patient', 'doctor', 'admin'];
 
     try {
-        // Перевірка правильності введення ролі
         if (!validRoles.includes(role)) {
             return res.status(400).json({ error: 'Invalid role. Must be one of: patient, doctor, admin' });
         }
 
-        // Перевірка чи існує користувач з таким же username або email
         const existingUser = await User.findOne({ $or: [{ username }, { email }] });
         if (existingUser) {
             return res.status(400).json({ error: 'User already exists' });
         }
 
-        // Хешування пароля
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        // Створення нового користувача
         const newUser = new User({
             username,
             password: hashedPassword,
@@ -70,6 +65,7 @@ router.post('/login', async (req, res) => {
     }
 });
 
+//Редагування користувача
 router.put('/update/:id', async (req, res) => {
     const { id } = req.params;
     const { username, email, first_name, last_name, role, clinic_id } = req.body;
@@ -104,6 +100,7 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
+//Видалення користувача
 router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -131,6 +128,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
+//Отримання усіх користувачів
 router.get('/profile', async (req, res) => {
     try {
         const token = req.headers.authorization.split(' ')[1];
@@ -149,6 +147,7 @@ router.get('/profile', async (req, res) => {
     }
 });
 
+//Отримання пацієнтів
 router.get('/patients', async (req, res) => {
     try {
         const patients = await User.find({ role: 'patient' }, 'first_name last_name');
@@ -159,6 +158,7 @@ router.get('/patients', async (req, res) => {
     }
 });
 
+//Отримання лікарів
 router.get('/doctors', async (req, res) => {
     const { clinic_id } = req.query;
 
@@ -176,6 +176,7 @@ router.get('/doctors', async (req, res) => {
     }
 });
 
+//Отримання певного користувача
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -191,7 +192,7 @@ router.get('/:id', async (req, res) => {
     }
 });
 
-// Маршрут для отримання списку клінік
+// Отримання списку клінік
 router.get('/clinics', async (req, res) => {
     try {
         const clinics = await Clinic.find();
