@@ -68,9 +68,7 @@ const MedicalRecordList = () => {
     };
 
     const handleScanComplete = (data, qrCodeUrl) => {
-        // Process the scanned data and qrCodeUrl here
         console.log(data, qrCodeUrl);
-        // Reset scanning state or other logic as needed
         setScanning(null);
     };
 
