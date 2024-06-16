@@ -4,7 +4,7 @@ const User = require('../models/User');
 const Clinic = require('../models/Clinic');
 const router = express.Router();
 
-// Создание нового расписания
+// Створення нового розкладу
 router.post('/create', async (req, res) => {
     const { doctor_id, clinic_id, date, start_time, end_time } = req.body;
 
@@ -28,7 +28,7 @@ router.post('/create', async (req, res) => {
     }
 });
 
-// Просмотр всех расписаний
+// Перегляд усіх розкладів
 router.get('/all', async (req, res) => {
     try {
         const schedules = await Schedule.find({})
@@ -42,7 +42,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
-// Редактирование расписания
+// Редагування розкладу
 router.put('/update/:id', async (req, res) => {
     const { id } = req.params;
     const { doctor_id, clinic_id, day_of_week, start_time, end_time } = req.body;
@@ -82,7 +82,7 @@ router.put('/update/:id', async (req, res) => {
     }
 });
 
-// Удаление расписания
+// Видалення розкладу
 router.delete('/delete/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -100,6 +100,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
+//Отримання розкладу
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
