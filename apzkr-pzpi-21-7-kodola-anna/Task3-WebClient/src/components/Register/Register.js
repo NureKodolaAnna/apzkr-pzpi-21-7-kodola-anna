@@ -85,10 +85,8 @@ const Register = () => {
                 const response = await axios.post('http://localhost:3000/api/users/register', formData);
                 const { token, role } = response.data;
 
-                // Save token to local storage
                 localStorage.setItem('token', token);
 
-                // Redirect based on role
                 if (role === 'admin') {
                     navigate('/admin');
                 } else if (role === 'doctor') {
