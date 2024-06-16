@@ -1,0 +1,73 @@
+.clinic-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.clinic-list h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3D550C;
+}
+
+.clinic-list ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.clinic-list li {
+    border-bottom: 1px solid #ccc;
+    padding: 10px 0;
+    margin-bottom: 10px;
+}
+
+.clinic-list li:last-child {
+    border-bottom: none;
+}
+
+.clinic-list strong {
+    display: inline-block;
+    width: 120px;
+}
+
+.list-buttons {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.edit-list-button, .delete-list-button {
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin: 10px;
+    width: 50%;
+    font-size: 16px;
+}
+
+.edit-list-button {
+    background-color: #4CAF50;
+    color: white;
+    text-decoration: none;
+    margin: 0;
+    padding: 3px;
+    text-align: center;
+}
+
+.edit-list-button:hover {
+    background-color: #1D741B;
+}
+
+.delete-list-button {
+    background-color: #ef5b55;
+    color: white;
+}
+
+.delete-list-button:hover {
+    background-color: #f34a41;
+}

@@ -1,0 +1,56 @@
+.edit-user-form {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.edit-user-form h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #3D550C;
+}
+
+.edit-user-form .form-group {
+    margin-bottom: 15px;
+}
+
+.edit-user-form .form-group label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.edit-user-form .form-group input,
+.edit-user-form .form-group select {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.edit-user-form .form-group select {
+    padding: 6px;
+}
+
+.edit-user-form button {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #59981A;
+    color: white;
+    cursor: pointer;
+}
+
+.edit-user-form button:hover {
+    background-color: #1D741B;
+}
+
+.edit-user-form .error-message {
+    color: #ff5151;
+    text-align: center;
+    margin-top: 10px;
+}
