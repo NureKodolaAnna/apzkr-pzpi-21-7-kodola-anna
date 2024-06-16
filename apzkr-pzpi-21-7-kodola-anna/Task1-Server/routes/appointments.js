@@ -109,6 +109,7 @@ router.delete('/delete/:id', async (req, res) => {
     }
 });
 
+//Отримання усіх записів
 router.get('/all', async (req, res) => {
     try {
         const appointments = await Appointment.find()
@@ -123,6 +124,7 @@ router.get('/all', async (req, res) => {
     }
 });
 
+//Отримання записів для відповідного лікаря
 router.get('/doctor/:doctorId', async (req, res) => {
     const { doctorId } = req.params;
     const token = req.headers.authorization.split(' ')[1];
@@ -144,6 +146,7 @@ router.get('/doctor/:doctorId', async (req, res) => {
     }
 });
 
+//Отримання певного запису
 router.get('/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -163,10 +166,10 @@ router.get('/:id', async (req, res) => {
     }
 });
 
+//Оплата запису на прийом
 router.post('/pay', async (req, res) => {
     const { appointmentId, cardNumber, cvv, expiryDate } = req.body;
 
-    // Валидация данных карты (эмуляция)
     if (cardNumber.length !== 16 || cvv.length !== 3) {
         return res.status(400).json({ error: 'Invalid card details' });
     }
@@ -177,7 +180,6 @@ router.post('/pay', async (req, res) => {
             return res.status(404).json({ error: 'Appointment not found' });
         }
 
-        // Обновление статуса приема на "оплачено"
         appointment.status = 'paid';
         await appointment.save();
 
@@ -189,7 +191,7 @@ router.post('/pay', async (req, res) => {
 });
 
 
-// Обработка платежа
+// Обробка оплати
 router.post('/pay/:id', async (req, res) => {
     const { id } = req.params;
 
@@ -210,6 +212,7 @@ router.post('/pay/:id', async (req, res) => {
     }
 });
 
+//Отримання записів певного пацієнта
 router.get('/patient/:patient_id', async (req, res) => {
     const { patient_id } = req.params;
     const token = req.headers.authorization.split(' ')[1];
