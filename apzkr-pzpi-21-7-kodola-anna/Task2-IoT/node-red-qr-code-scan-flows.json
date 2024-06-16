@@ -1,0 +1,92 @@
+[
+    {
+        "id": "1950867e25cf4b95",
+        "type": "tab",
+        "label": "Scan QR Code",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "9e103dc0f0628f59",
+        "type": "http in",
+        "z": "1950867e25cf4b95",
+        "name": "",
+        "url": "/scan-qr",
+        "method": "post",
+        "upload": true,
+        "swaggerDoc": "",
+        "x": 110,
+        "y": 100,
+        "wires": [
+            [
+                "6ab4f7ff4827b11a",
+                "f0cfe25843d44a1b"
+            ]
+        ]
+    },
+    {
+        "id": "f0cfe25843d44a1b",
+        "type": "function",
+        "z": "1950867e25cf4b95",
+        "name": "Process QR Data",
+        "func": "msg.payload = msg.payload.URL;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 390,
+        "y": 100,
+        "wires": [
+            [
+                "0c628e6d46ca99cd",
+                "e88453d4422860c8"
+            ]
+        ]
+    },
+    {
+        "id": "6ab4f7ff4827b11a",
+        "type": "debug",
+        "z": "1950867e25cf4b95",
+        "name": "debug 4",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 300,
+        "y": 180,
+        "wires": []
+    },
+    {
+        "id": "0c628e6d46ca99cd",
+        "type": "debug",
+        "z": "1950867e25cf4b95",
+        "name": "debug 5",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "statusVal": "",
+        "statusType": "auto",
+        "x": 600,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "e88453d4422860c8",
+        "type": "http response",
+        "z": "1950867e25cf4b95",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 790,
+        "y": 100,
+        "wires": []
+    }
+]
